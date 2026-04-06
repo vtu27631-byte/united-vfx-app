@@ -5,7 +5,9 @@ import { useState, useEffect } from "react";
 export default function Home() {
   const [mounted, setMounted] = useState(false);
   const [open, setOpen] = useState(false);
-  const [activeFAQ, setActiveFAQ] = useState(null);
+
+  // ✅ FIXED TYPE
+  const [activeFAQ, setActiveFAQ] = useState<number | null>(null);
 
   const [form, setForm] = useState({
     name: "",
@@ -18,7 +20,7 @@ export default function Home() {
     setMounted(true);
   }, []);
 
-  if (!mounted) return null; // 🔥 prevents hydration error
+  if (!mounted) return null;
 
   const sendWhatsApp = () => {
     const message = `Hello UNITED VFX 🎬
@@ -229,7 +231,6 @@ I want to book a reel shoot.`;
 
       {/* FOOTER */}
       <footer className="bg-[#0a0000] border-t border-red-900 px-6 py-12">
-
         <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
 
           <div>
@@ -250,15 +251,9 @@ I want to book a reel shoot.`;
           </div>
 
           <div className="text-right space-x-4">
-            <a href="https://www.instagram.com/united_veltech" target="_blank">
-              Instagram
-            </a>
-            <a href="https://youtube.com/@unitedvfx-l8u" target="_blank">
-              YouTube
-            </a>
-            <a href="https://wa.me/917207299349" target="_blank">
-              WhatsApp
-            </a>
+            <a href="https://www.instagram.com/united_veltech" target="_blank">Instagram</a>
+            <a href="https://youtube.com/@unitedvfx-l8u" target="_blank">YouTube</a>
+            <a href="https://wa.me/917207299349" target="_blank">WhatsApp</a>
           </div>
 
         </div>
@@ -266,7 +261,6 @@ I want to book a reel shoot.`;
         <div className="text-center mt-10 text-gray-500 text-sm">
           © 2026 UNITED VFX — All rights reserved
         </div>
-
       </footer>
 
     </main>
