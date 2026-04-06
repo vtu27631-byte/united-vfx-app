@@ -1,5 +1,6 @@
 import "./globals.css";
 import { Poppins } from "next/font/google";
+import { ReactNode } from "react";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -11,7 +12,11 @@ export const metadata = {
   description: "Reel Booking Service",
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({
+  children,
+}: {
+  children: ReactNode;
+}) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={poppins.className}>{children}</body>
