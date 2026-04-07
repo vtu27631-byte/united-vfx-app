@@ -5,10 +5,9 @@ import { useState, useEffect } from "react";
 export default function Home() {
   const [mounted, setMounted] = useState(false);
   const [open, setOpen] = useState(false);
-  const [activeFAQ, setActiveFAQ] = useState<number | null>(null);
 
   const announcement =
-    "🚀 UNITED VFX LIVE — Chennai • Kodur • Tirupati — Book Now";
+    "🔥 UNITED VFX LIVE • 15 MIN REEL DELIVERY ⚡ • Chennai • Kodur • Tirupati • Book Now 🚀";
 
   const [form, setForm] = useState({
     name: "",
@@ -35,41 +34,35 @@ Location: ${form.location}
 
 I have completed payment and want to confirm booking.`;
 
-    if (typeof window !== "undefined") {
-      window.open(
-        `https://wa.me/917207299349?text=${encodeURIComponent(message)}`,
-        "_blank"
-      );
-    }
+    window.open(
+      `https://wa.me/917207299349?text=${encodeURIComponent(message)}`,
+      "_blank"
+    );
   };
 
   return (
     <main className="bg-gradient-to-b from-black via-[#1a0000] to-black text-white">
 
-      {/* 🔥 MOVING TEXT */}
-      <div className="bg-red-600 overflow-hidden whitespace-nowrap">
-        <div className="animate-scroll inline-block px-4 py-2">
-          {announcement}
+      {/* 🔥 SMOOTH CONTINUOUS SCROLL */}
+      <div className="bg-red-600 overflow-hidden">
+        <div className="flex animate-scroll whitespace-nowrap">
+          <span className="mx-6">{announcement}</span>
+          <span className="mx-6">{announcement}</span>
+          <span className="mx-6">{announcement}</span>
         </div>
       </div>
 
       {/* NAVBAR */}
       <nav className="flex flex-col md:flex-row justify-between items-center px-6 py-4 border-b border-red-900">
-
-        {/* LOGO */}
-        <img src="/logo.png" alt="logo" className="w-[160px] mb-3 md:mb-0" />
+        <img src="/logo.png" className="w-[150px] mb-3 md:mb-0" />
 
         <div className="flex flex-wrap justify-center gap-3">
           <a href="https://www.instagram.com/united__vfx" target="_blank">
-            <button className="border px-4 py-2 rounded-full text-sm">
-              Instagram
-            </button>
+            <button className="border px-4 py-2 rounded-full text-sm">Instagram</button>
           </a>
 
           <a href="https://youtube.com/@unitedvfx-l8u" target="_blank">
-            <button className="border px-4 py-2 rounded-full text-sm">
-              YouTube
-            </button>
+            <button className="border px-4 py-2 rounded-full text-sm">YouTube</button>
           </a>
 
           <button
@@ -88,8 +81,8 @@ I have completed payment and want to confirm booking.`;
         </h1>
 
         <p className="mt-4 text-gray-400">
-          Chennai • Kodur • Tirupati <br />
-          Budget Friendly Premium Quality
+          ⚡ 15 Minutes Fast Delivery <br />
+          Chennai • Kodur • Tirupati
         </p>
 
         <button
@@ -119,33 +112,6 @@ I have completed payment and want to confirm booking.`;
             <h3>Premium</h3>
             <p className="text-yellow-400 text-2xl">₹5000</p>
           </div>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section className="px-6 py-16">
-        <h2 className="text-3xl text-center mb-8">FAQ</h2>
-
-        <div className="space-y-4 max-w-xl mx-auto">
-          {[
-            { q: "What is UNITED VFX?", a: "Cinematic reel shooting & editing service." },
-            { q: "Pricing?", a: "₹1000 to ₹5000 based on reel type." }
-          ].map((item, i) => (
-            <div
-              key={i}
-              className="border p-4 rounded-lg"
-              onClick={() => setActiveFAQ(activeFAQ === i ? null : i)}
-            >
-              <div className="flex justify-between">
-                <h3>{item.q}</h3>
-                <span>+</span>
-              </div>
-
-              {activeFAQ === i && (
-                <p className="mt-2 text-gray-400">{item.a}</p>
-              )}
-            </div>
-          ))}
         </div>
       </section>
 
@@ -179,13 +145,11 @@ I have completed payment and want to confirm booking.`;
               <option>Tirupati</option>
             </select>
 
-            {/* 💰 QR CODE */}
             <img src="/qr.png" className="w-40 mx-auto mb-3" />
 
-            {/* 💰 PAY BUTTON */}
             <a href="upi://pay?pa=yourname@upi&pn=UNITED VFX&cu=INR" target="_blank">
               <button className="w-full bg-yellow-500 py-2 rounded mb-2">
-                Pay Now (UPI)
+                Pay Now
               </button>
             </a>
 
