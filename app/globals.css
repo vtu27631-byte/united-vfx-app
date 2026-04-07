@@ -1,8 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* BODY */
+body {
+  background: linear-gradient(to bottom, #000, #1a0000, #000);
+  color: white;
+  font-family: system-ui, sans-serif;
+}
+
+/* SCROLL TEXT */
 @keyframes scroll {
-  0% { transform: translateX(0); }
+  0% { transform: translateX(0%); }
   100% { transform: translateX(-50%); }
 }
 
 .animate-scroll {
+  display: flex;
+  width: max-content;
   animation: scroll 15s linear infinite;
+}
+
+/* BUTTON */
+button {
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+/* INPUT */
+input, select {
+  background: black;
+  border: 1px solid #333;
+  color: white;
+  padding: 10px;
+  border-radius: 6px;
 }
