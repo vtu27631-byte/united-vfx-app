@@ -13,7 +13,7 @@ export default function Home() {
     name: "",
     phone: "",
     reels: "",
-    category: "Basic Reel",
+    category: "Basic",
     location: "Chennai",
   });
 
@@ -33,104 +33,97 @@ Location: ${form.location}`;
   };
 
   return (
-    <main className="min-h-screen">
+    <main>
 
       {/* SCROLL BAR */}
-      <div className="bg-red-600 overflow-hidden">
-        <div className="flex animate-scroll whitespace-nowrap">
-          <span className="mx-6">{announcement}</span>
-          <span className="mx-6">{announcement}</span>
+      <div className="scroll-bar">
+        <div className="scroll-text">
+          <span>{announcement}</span>
+          <span>{announcement}</span>
         </div>
       </div>
 
       {/* NAV */}
-      <nav className="flex flex-col md:flex-row justify-between items-center p-5 border-b border-red-900">
-        <img src="/logo.png" className="w-40 mb-3 md:mb-0" />
+      <nav className="nav">
+        <img src="/logo.png" className="logo" />
 
-        <div className="flex gap-3 flex-wrap justify-center">
+        <div className="nav-buttons">
           <a href="https://www.instagram.com/united__vfx" target="_blank">
-            <button className="border px-4 py-2 rounded-full">Instagram</button>
+            <button>Instagram</button>
           </a>
 
           <a href="https://youtube.com/@unitedvfx-l8u" target="_blank">
-            <button className="border px-4 py-2 rounded-full">YouTube</button>
+            <button>YouTube</button>
           </a>
 
-          <button
-            onClick={() => setOpen(true)}
-            className="bg-red-600 px-5 py-2 rounded-full"
-          >
+          <button className="red-btn" onClick={() => setOpen(true)}>
             Book Reel
           </button>
         </div>
       </nav>
 
       {/* HERO */}
-      <section className="text-center py-20">
-        <h1 className="text-5xl font-bold">Cinematic Reel Shoots</h1>
+      <section className="hero">
+        <h1>Cinematic Reel Shoots</h1>
 
-        <p className="mt-4 text-gray-400">
+        <p>
           ⚡ 15 Minutes Fast Delivery <br />
           Chennai • Kodur • Tirupati
         </p>
 
-        <button
-          onClick={() => setOpen(true)}
-          className="mt-8 bg-red-600 px-8 py-3 rounded-full"
-        >
+        <button className="red-btn" onClick={() => setOpen(true)}>
           Book Now
         </button>
       </section>
 
       {/* PRICING */}
-      <section className="text-center py-10">
-        <h2 className="text-2xl mb-6">Pricing</h2>
+      <section className="pricing">
+        <h2>Pricing</h2>
 
-        <div className="flex flex-col md:flex-row justify-center gap-6">
-          <div className="border p-6 rounded-xl">₹1000 Basic</div>
-          <div className="border p-6 rounded-xl">₹1500 Standard</div>
-          <div className="border p-6 rounded-xl">₹5000 Premium</div>
+        <div className="pricing-container">
+          <div className="pricing-box">₹1000 Basic</div>
+          <div className="pricing-box">₹1500 Standard</div>
+          <div className="pricing-box">₹5000 Premium</div>
         </div>
       </section>
 
       {/* MODAL */}
       {open && (
-        <div className="fixed inset-0 bg-black/80 flex justify-center items-center">
-          <div className="bg-[#140000] p-6 rounded-xl w-[90%] max-w-md">
+        <div className="modal">
+          <div className="modal-box">
 
-            <h2 className="mb-4 text-xl">Book Reel</h2>
+            <h2>Book Reel</h2>
 
-            <input placeholder="Name" className="w-full mb-2"
+            <input placeholder="Name"
               onChange={(e)=>setForm({...form,name:e.target.value})}/>
-            <input placeholder="Phone" className="w-full mb-2"
+            <input placeholder="Phone"
               onChange={(e)=>setForm({...form,phone:e.target.value})}/>
-            <input placeholder="No of Reels" className="w-full mb-2"
+            <input placeholder="No of Reels"
               onChange={(e)=>setForm({...form,reels:e.target.value})}/>
 
-            <select className="w-full mb-2"
-              onChange={(e)=>setForm({...form,category:e.target.value})}>
+            <select onChange={(e)=>setForm({...form,category:e.target.value})}>
               <option>Basic</option>
               <option>Standard</option>
               <option>Premium</option>
             </select>
 
-            <select className="w-full mb-3"
-              onChange={(e)=>setForm({...form,location:e.target.value})}>
+            <select onChange={(e)=>setForm({...form,location:e.target.value})}>
               <option>Chennai</option>
               <option>Kodur</option>
               <option>Tirupati</option>
             </select>
 
-            <img src="/qr.png" className="w-32 mx-auto mb-3" />
+            <img src="/qr.png" className="qr" />
 
             <a href="upi://pay?pa=yourname@upi">
-              <button className="w-full bg-yellow-500 py-2 mb-2">Pay</button>
+              <button className="pay-btn">Pay</button>
             </a>
 
-            <button onClick={sendWhatsApp}
-              className="w-full bg-green-600 py-2">
+            <button onClick={sendWhatsApp} className="confirm-btn">
               Confirm
             </button>
+
+            <button onClick={()=>setOpen(false)}>Cancel</button>
 
           </div>
         </div>
