@@ -5,13 +5,15 @@ import { useState, useEffect } from "react";
 export default function Home() {
   const [mounted, setMounted] = useState(false);
   const [open, setOpen] = useState(false);
-
-  // ✅ FIXED TYPE
   const [activeFAQ, setActiveFAQ] = useState<number | null>(null);
+
+  const announcement =
+    "🚀 UNITED VFX LIVE — Chennai • Kodur • Tirupati — Book Now";
 
   const [form, setForm] = useState({
     name: "",
     phone: "",
+    reels: "",
     category: "Basic Reel",
     location: "Chennai",
   });
@@ -27,10 +29,11 @@ export default function Home() {
 
 Name: ${form.name}
 Phone: ${form.phone}
+No of Reels: ${form.reels}
 Reel Type: ${form.category}
 Location: ${form.location}
 
-I want to book a reel shoot.`;
+I have completed payment and want to confirm booking.`;
 
     if (typeof window !== "undefined") {
       window.open(
@@ -40,46 +43,38 @@ I want to book a reel shoot.`;
     }
   };
 
-  const faqs = [
-    {
-      q: "What exactly is UNITED VFX?",
-      a: "We provide cinematic reel shooting and editing services with fast delivery.",
-    },
-    {
-      q: "How is it different from a regular videographer?",
-      a: "We focus only on reels with fast turnaround and budget pricing.",
-    },
-    {
-      q: "What packages do you offer?",
-      a: "Basic ₹500, Standard ₹1500, Premium ₹5000 depending on location.",
-    },
-    {
-      q: "How fast is delivery?",
-      a: "Usually within same day or within 24 hours.",
-    },
-  ];
-
   return (
     <main className="bg-gradient-to-b from-black via-[#1a0000] to-black text-white">
 
-      {/* NAVBAR */}
-      <nav className="flex justify-between items-center px-8 py-5 border-b border-red-900">
-        <h1 className="text-2xl font-bold">
-          UNITED <span className="text-yellow-400">VFX</span>
-        </h1>
+      {/* 🔥 MOVING TEXT */}
+      <div className="bg-red-600 overflow-hidden whitespace-nowrap">
+        <div className="animate-scroll inline-block px-4 py-2">
+          {announcement}
+        </div>
+      </div>
 
-        <div className="flex gap-4">
-          <a href="https://www.instagram.com/united_veltech" target="_blank">
-            <button className="border px-4 py-2 rounded-full">Instagram</button>
+      {/* NAVBAR */}
+      <nav className="flex flex-col md:flex-row justify-between items-center px-6 py-4 border-b border-red-900">
+
+        {/* LOGO */}
+        <img src="/logo.png" alt="logo" className="w-[160px] mb-3 md:mb-0" />
+
+        <div className="flex flex-wrap justify-center gap-3">
+          <a href="https://www.instagram.com/united__vfx" target="_blank">
+            <button className="border px-4 py-2 rounded-full text-sm">
+              Instagram
+            </button>
           </a>
 
           <a href="https://youtube.com/@unitedvfx-l8u" target="_blank">
-            <button className="border px-4 py-2 rounded-full">YouTube</button>
+            <button className="border px-4 py-2 rounded-full text-sm">
+              YouTube
+            </button>
           </a>
 
           <button
             onClick={() => setOpen(true)}
-            className="bg-red-600 px-5 py-2 rounded-full"
+            className="bg-red-600 px-5 py-2 rounded-full text-sm"
           >
             Book Reel
           </button>
@@ -88,78 +83,66 @@ I want to book a reel shoot.`;
 
       {/* HERO */}
       <section className="text-center py-20 px-5">
-        <h2 className="text-red-400 tracking-widest">
-          UNITED VFX STUDIO
-        </h2>
-
-        <h1 className="text-5xl md:text-7xl font-bold mt-5">
-          Shoot • Edit • Deliver <br />
-          <span className="text-yellow-400">Cinematic Reels</span>
+        <h1 className="text-4xl md:text-6xl font-bold">
+          Cinematic Reel Shoots
         </h1>
 
-        <p className="mt-6 text-gray-400">
+        <p className="mt-4 text-gray-400">
           Chennai • Kodur • Tirupati <br />
-          Budget-friendly premium reels
+          Budget Friendly Premium Quality
         </p>
 
-        <div className="mt-10 flex justify-center gap-5">
-          <button
-            onClick={() => setOpen(true)}
-            className="bg-red-600 px-8 py-3 rounded-full"
-          >
-            Book a Reel
-          </button>
-
-          <a href="https://wa.me/917207299349" target="_blank">
-            <button className="border px-8 py-3 rounded-full">
-              WhatsApp
-            </button>
-          </a>
-        </div>
+        <button
+          onClick={() => setOpen(true)}
+          className="mt-8 bg-red-600 px-8 py-3 rounded-full"
+        >
+          Book a Reel
+        </button>
       </section>
 
       {/* PRICING */}
-      <section className="px-8 py-16 text-center">
-        <h2 className="text-3xl mb-10">Pricing</h2>
+      <section className="px-6 py-12 text-center">
+        <h2 className="text-2xl mb-6">Pricing</h2>
 
-        <div className="flex flex-col md:flex-row justify-center gap-8">
-          <div className="border border-red-800 p-8 rounded-2xl">
-            <h3>Basic Reel</h3>
-            <p className="text-yellow-400 text-3xl mt-3">₹500</p>
+        <div className="flex flex-col md:flex-row justify-center gap-6">
+          <div className="border p-6 rounded-xl">
+            <h3>Basic</h3>
+            <p className="text-yellow-400 text-2xl">₹1000</p>
           </div>
 
-          <div className="border border-red-800 p-8 rounded-2xl">
-            <h3>Standard Reel</h3>
-            <p className="text-yellow-400 text-3xl mt-3">₹1500</p>
+          <div className="border p-6 rounded-xl">
+            <h3>Standard</h3>
+            <p className="text-yellow-400 text-2xl">₹1500</p>
           </div>
 
-          <div className="border border-red-800 p-8 rounded-2xl">
-            <h3>Premium Reel</h3>
-            <p className="text-yellow-400 text-3xl mt-3">₹5000</p>
+          <div className="border p-6 rounded-xl">
+            <h3>Premium</h3>
+            <p className="text-yellow-400 text-2xl">₹5000</p>
           </div>
         </div>
       </section>
 
       {/* FAQ */}
-      <section className="px-6 py-20">
-        <h2 className="text-4xl text-center mb-10 font-semibold">
-          Got Questions?
-        </h2>
+      <section className="px-6 py-16">
+        <h2 className="text-3xl text-center mb-8">FAQ</h2>
 
-        <div className="max-w-2xl mx-auto space-y-4">
-          {faqs.map((item, i) => (
+        <div className="space-y-4 max-w-xl mx-auto">
+          {[
+            { q: "What is UNITED VFX?", a: "Cinematic reel shooting & editing service." },
+            { q: "Pricing?", a: "₹1000 to ₹5000 based on reel type." }
+          ].map((item, i) => (
             <div
               key={i}
-              className="bg-[#1a0000] border border-red-900 rounded-xl p-5 cursor-pointer"
+              className="border p-4 rounded-lg"
               onClick={() => setActiveFAQ(activeFAQ === i ? null : i)}
             >
               <div className="flex justify-between">
                 <h3>{item.q}</h3>
-                <span>⌄</span>
+                <span>+</span>
               </div>
 
               {activeFAQ === i && (
-                <p className="mt-3 text-gray-400">{item.a}</p>
+                <p className="mt-2 text-gray-400">{item.a}</p>
               )}
             </div>
           ))}
@@ -168,60 +151,51 @@ I want to book a reel shoot.`;
 
       {/* BOOKING MODAL */}
       {open && (
-        <div className="fixed inset-0 bg-black/80 flex justify-center items-center z-50">
-          <div className="bg-[#140000] p-8 rounded-2xl w-[90%] max-w-md">
+        <div className="fixed inset-0 bg-black/80 flex justify-center items-center">
+          <div className="bg-[#140000] p-6 rounded-xl w-[90%] max-w-md">
 
-            <h2 className="text-2xl mb-5 text-center">Book Your Reel</h2>
+            <h2 className="text-xl mb-4">Book Your Reel</h2>
 
-            <input
-              placeholder="Your Name"
-              className="w-full mb-3 p-3 rounded bg-black border border-gray-700"
-              onChange={(e) =>
-                setForm({ ...form, name: e.target.value })
-              }
-            />
+            <input placeholder="Name" className="w-full mb-3 p-2 bg-black"
+              onChange={(e)=>setForm({...form,name:e.target.value})}/>
 
-            <input
-              placeholder="Phone Number"
-              className="w-full mb-3 p-3 rounded bg-black border border-gray-700"
-              onChange={(e) =>
-                setForm({ ...form, phone: e.target.value })
-              }
-            />
+            <input placeholder="Phone" className="w-full mb-3 p-2 bg-black"
+              onChange={(e)=>setForm({...form,phone:e.target.value})}/>
 
-            <select
-              className="w-full mb-3 p-3 rounded bg-black border border-gray-700"
-              onChange={(e) =>
-                setForm({ ...form, category: e.target.value })
-              }
-            >
-              <option>Basic Reel (₹500)</option>
+            <input placeholder="No of Reels" className="w-full mb-3 p-2 bg-black"
+              onChange={(e)=>setForm({...form,reels:e.target.value})}/>
+
+            <select className="w-full mb-3 p-2 bg-black"
+              onChange={(e)=>setForm({...form,category:e.target.value})}>
+              <option>Basic Reel (₹1000)</option>
               <option>Standard Reel (₹1500)</option>
               <option>Premium Reel (₹5000)</option>
             </select>
 
-            <select
-              className="w-full mb-5 p-3 rounded bg-black border border-gray-700"
-              onChange={(e) =>
-                setForm({ ...form, location: e.target.value })
-              }
-            >
+            <select className="w-full mb-3 p-2 bg-black"
+              onChange={(e)=>setForm({...form,location:e.target.value})}>
               <option>Chennai</option>
               <option>Kodur</option>
               <option>Tirupati</option>
             </select>
 
-            <button
-              onClick={sendWhatsApp}
-              className="w-full bg-green-600 py-3 rounded-full"
-            >
-              Confirm via WhatsApp
+            {/* 💰 QR CODE */}
+            <img src="/qr.png" className="w-40 mx-auto mb-3" />
+
+            {/* 💰 PAY BUTTON */}
+            <a href="upi://pay?pa=yourname@upi&pn=UNITED VFX&cu=INR" target="_blank">
+              <button className="w-full bg-yellow-500 py-2 rounded mb-2">
+                Pay Now (UPI)
+              </button>
+            </a>
+
+            <button onClick={sendWhatsApp}
+              className="w-full bg-green-600 py-2 rounded">
+              Confirm Booking
             </button>
 
-            <button
-              onClick={() => setOpen(false)}
-              className="mt-3 w-full border py-2 rounded-full"
-            >
+            <button onClick={()=>setOpen(false)}
+              className="w-full mt-2 border py-2 rounded">
               Cancel
             </button>
 
@@ -230,37 +204,8 @@ I want to book a reel shoot.`;
       )}
 
       {/* FOOTER */}
-      <footer className="bg-[#0a0000] border-t border-red-900 px-6 py-12">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
-
-          <div>
-            <h1 className="text-xl font-bold">
-              UNITED <span className="text-yellow-400">VFX</span>
-            </h1>
-            <p className="text-gray-400 mt-2">
-              Cinematic Reel Booking Service <br />
-              Chennai • Kodur • Tirupati
-            </p>
-          </div>
-
-          <div className="text-center">
-            <p className="text-gray-400">Trusted Reel Service</p>
-            <p className="text-sm text-gray-500 mt-2">
-              Fast • Affordable • Cinematic
-            </p>
-          </div>
-
-          <div className="text-right space-x-4">
-            <a href="https://www.instagram.com/united_veltech" target="_blank">Instagram</a>
-            <a href="https://youtube.com/@unitedvfx-l8u" target="_blank">YouTube</a>
-            <a href="https://wa.me/917207299349" target="_blank">WhatsApp</a>
-          </div>
-
-        </div>
-
-        <div className="text-center mt-10 text-gray-500 text-sm">
-          © 2026 UNITED VFX — All rights reserved
-        </div>
+      <footer className="text-center py-6 text-gray-500">
+        © 2026 UNITED VFX
       </footer>
 
     </main>
