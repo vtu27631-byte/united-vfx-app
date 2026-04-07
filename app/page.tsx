@@ -5,6 +5,9 @@ import { useState } from "react";
 export default function Home() {
   const [open, setOpen] = useState(false);
 
+  const announcement =
+    "🔥 UNITED VFX LIVE • 15 MIN REEL DELIVERY ⚡ • Chennai • Kodur • Tirupati • Book Now 🚀";
+
   const [form, setForm] = useState({
     name: "",
     phone: "",
@@ -13,23 +16,23 @@ export default function Home() {
     location: "Chennai",
   });
 
-  const announcement =
-    "🔥 UNITED VFX LIVE • 15 MIN DELIVERY ⚡ • CHENNAI • KODUR • TIRUPATI 🚀";
-
   const sendWhatsApp = () => {
     const msg = `Hello UNITED VFX 🎬
 
 Name: ${form.name}
 Phone: ${form.phone}
-Reels: ${form.reels}
+No of Reels: ${form.reels}
 Type: ${form.category}
 Location: ${form.location}`;
 
-    window.open(`https://wa.me/917207299349?text=${encodeURIComponent(msg)}`);
+    window.open(
+      `https://wa.me/917207299349?text=${encodeURIComponent(msg)}`,
+      "_blank"
+    );
   };
 
   return (
-    <main>
+    <main className="container">
 
       {/* SCROLL BAR */}
       <div className="scroll-bar">
@@ -40,7 +43,7 @@ Location: ${form.location}`;
       </div>
 
       {/* NAV */}
-      <div className="nav">
+      <nav className="nav">
         <img src="/logo.png" className="logo" />
 
         <div className="nav-buttons">
@@ -56,20 +59,20 @@ Location: ${form.location}`;
             Book Reel
           </button>
         </div>
-      </div>
+      </nav>
 
       {/* HERO */}
-      <div className="hero">
+      <section className="hero">
         <h1>Cinematic Reel Shoots</h1>
         <p>⚡ 15 Minutes Fast Delivery</p>
 
         <button className="red-btn" onClick={() => setOpen(true)}>
           Book Now
         </button>
-      </div>
+      </section>
 
       {/* PRICING */}
-      <div className="pricing">
+      <section className="pricing">
         <h2>Pricing</h2>
 
         <div className="pricing-container">
@@ -77,29 +80,51 @@ Location: ${form.location}`;
           <div className="pricing-box">₹1500 Standard</div>
           <div className="pricing-box">₹5000 Premium</div>
         </div>
-      </div>
+      </section>
 
-      {/* MODAL */}
+      {/* BOOKING MODAL */}
       {open && (
         <div className="modal">
           <div className="modal-box">
 
             <h2>Book Reel</h2>
 
-            <input placeholder="Name"
-              onChange={(e)=>setForm({...form,name:e.target.value})}/>
-            <input placeholder="Phone"
-              onChange={(e)=>setForm({...form,phone:e.target.value})}/>
-            <input placeholder="No of Reels"
-              onChange={(e)=>setForm({...form,reels:e.target.value})}/>
+            <input
+              placeholder="Name"
+              onChange={(e) =>
+                setForm({ ...form, name: e.target.value })
+              }
+            />
 
-            <select onChange={(e)=>setForm({...form,category:e.target.value})}>
+            <input
+              placeholder="Phone"
+              onChange={(e) =>
+                setForm({ ...form, phone: e.target.value })
+              }
+            />
+
+            <input
+              placeholder="No of Reels"
+              onChange={(e) =>
+                setForm({ ...form, reels: e.target.value })
+              }
+            />
+
+            <select
+              onChange={(e) =>
+                setForm({ ...form, category: e.target.value })
+              }
+            >
               <option>Basic</option>
               <option>Standard</option>
               <option>Premium</option>
             </select>
 
-            <select onChange={(e)=>setForm({...form,location:e.target.value})}>
+            <select
+              onChange={(e) =>
+                setForm({ ...form, location: e.target.value })
+              }
+            >
               <option>Chennai</option>
               <option>Kodur</option>
               <option>Tirupati</option>
@@ -107,7 +132,7 @@ Location: ${form.location}`;
 
             <img src="/qr.png" className="qr" />
 
-            <a href="upi://pay?pa=yourname@upi">
+            <a href="upi://pay?pa=yourname@upi&pn=UNITED VFX&cu=INR">
               <button className="pay-btn">Pay Now</button>
             </a>
 
@@ -115,12 +140,11 @@ Location: ${form.location}`;
               Confirm Booking
             </button>
 
-            <button onClick={()=>setOpen(false)}>Cancel</button>
+            <button onClick={() => setOpen(false)}>Cancel</button>
 
           </div>
         </div>
       )}
-
     </main>
   );
 }
