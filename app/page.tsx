@@ -1,13 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export default function Home() {
-  const [mounted, setMounted] = useState(false);
   const [open, setOpen] = useState(false);
-
-  const announcement =
-    "🔥 UNITED VFX LIVE • 15 MIN REEL DELIVERY ⚡ • Chennai • Kodur • Tirupati • Book Now 🚀";
 
   const [form, setForm] = useState({
     name: "",
@@ -17,8 +13,8 @@ export default function Home() {
     location: "Chennai",
   });
 
-  useEffect(() => setMounted(true), []);
-  if (!mounted) return null;
+  const announcement =
+    "🔥 UNITED VFX LIVE • 15 MIN DELIVERY ⚡ • CHENNAI • KODUR • TIRUPATI 🚀";
 
   const sendWhatsApp = () => {
     const msg = `Hello UNITED VFX 🎬
@@ -44,7 +40,7 @@ Location: ${form.location}`;
       </div>
 
       {/* NAV */}
-      <nav className="nav">
+      <div className="nav">
         <img src="/logo.png" className="logo" />
 
         <div className="nav-buttons">
@@ -60,24 +56,20 @@ Location: ${form.location}`;
             Book Reel
           </button>
         </div>
-      </nav>
+      </div>
 
       {/* HERO */}
-      <section className="hero">
+      <div className="hero">
         <h1>Cinematic Reel Shoots</h1>
-
-        <p>
-          ⚡ 15 Minutes Fast Delivery <br />
-          Chennai • Kodur • Tirupati
-        </p>
+        <p>⚡ 15 Minutes Fast Delivery</p>
 
         <button className="red-btn" onClick={() => setOpen(true)}>
           Book Now
         </button>
-      </section>
+      </div>
 
       {/* PRICING */}
-      <section className="pricing">
+      <div className="pricing">
         <h2>Pricing</h2>
 
         <div className="pricing-container">
@@ -85,7 +77,7 @@ Location: ${form.location}`;
           <div className="pricing-box">₹1500 Standard</div>
           <div className="pricing-box">₹5000 Premium</div>
         </div>
-      </section>
+      </div>
 
       {/* MODAL */}
       {open && (
@@ -116,11 +108,11 @@ Location: ${form.location}`;
             <img src="/qr.png" className="qr" />
 
             <a href="upi://pay?pa=yourname@upi">
-              <button className="pay-btn">Pay</button>
+              <button className="pay-btn">Pay Now</button>
             </a>
 
-            <button onClick={sendWhatsApp} className="confirm-btn">
-              Confirm
+            <button className="confirm-btn" onClick={sendWhatsApp}>
+              Confirm Booking
             </button>
 
             <button onClick={()=>setOpen(false)}>Cancel</button>
